@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--테스트 환경 레벨을 정함-->
+<Configuration status="INFO">
+    <!--Appenders은 pattern으로 만들어서 console를 뿌리겠다 선언한 것-->
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <!--console에 위에 것을 등록-->
+    <Loggers>
+        <!--additivity="false"를 설정하면 해당 로거가 부모 로거의 설정을 상속받지 않는다. 즉, 독립적인 로그 레벨을 가지게 됨-->
+        <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="console"/>
+        </logger>
+        <logger name="com.multicampus" level="INFO" additivity="false">
+            <appender-ref ref="console"/>
+        </logger>
+
+        <Root level="info" additivity="false">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
